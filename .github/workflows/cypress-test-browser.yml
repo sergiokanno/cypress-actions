@@ -1,0 +1,32 @@
+name: Cypress Test Browser
+
+on:
+  push:
+    branches: 
+      - "main"
+
+  workflow_dispatch:
+
+jobs:
+
+  cypress-tests:
+
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        navegador: [chrome, firefox, electron]
+    steps:
+      - name: Comentário
+        run: |
+          echo "Running on ${{ github.event_name }} with browse ${{ matrix.navegador }}"
+          
+      - name: Get code
+        uses: actions/checkout@v4.2.2
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6.5.0
+        with:
+          install-command: yarn install
+          browser: ${{ matrix.navegador }}
+          record: false
+          spec: cypress/e2e/*
