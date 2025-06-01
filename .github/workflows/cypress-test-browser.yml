@@ -14,11 +14,11 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        navegador: [chrome, firefox, electron]
+        navegador: [chrome, edge, electron]
     steps:
       - name: Comentário
         run: |
-          echo "Running on ${{ github.event_name }} with browse ${{ matrix.navegador }}"
+          echo "Running on ${{ github.event_name }} with browser ${{ matrix.navegador }}"
           
       - name: Get code
         uses: actions/checkout@v4.2.2
