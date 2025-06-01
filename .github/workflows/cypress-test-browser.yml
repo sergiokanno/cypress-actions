@@ -12,9 +12,11 @@ jobs:
   cypress-tests:
 
     runs-on: ubuntu-22.04
+    container:
+      image: cypress/browsers:node-20.18.0-chrome-130.0.6723.69-1-ff-131.0.3-edge-130.0.2849.52-1
     strategy:
       matrix:
-        navegador: [chrome, edge, electron]
+        navegador: [chrome, edge, electron, firefox]
     steps:
       - name: Comentário
         run: |
